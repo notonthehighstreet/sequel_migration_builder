@@ -111,7 +111,7 @@ module Sequel
         return unless type == :enum
 
         match = db_type_string.match(/\((.+)\)/)
-        eval('[' + match[1].gsub(/''/, "\\\\'") + ']') if match[1]
+        eval('[' + match[1].gsub(/([a-zA-Z])''/, "\\1\\\\'") + ']') if match[1]
       end
     end
   end
